@@ -14,5 +14,7 @@ public class RecordedTests : PageTest
     public async Task TestThatIHaveRecorded()
     {
         await Page.GotoAsync("https://demo.playwright.dev/todomvc/#/active");
+
+        // TODO use codegen to record a new test.
     }
 }
