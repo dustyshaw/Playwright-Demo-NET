@@ -23,6 +23,7 @@ Build the project to generate the playwright.ps1 script:
 dotnet build
 ```
 Install Playwright:
+__Replace X in `netX` with whatever version of .NET you are using. (Ex. `net8.0`)__
 ```
 pwsh bin/Debug/netX/playwright.ps1 install
 ```
