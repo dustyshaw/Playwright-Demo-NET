@@ -23,9 +23,8 @@ Build the project to generate the playwright.ps1 script:
 dotnet build
 ```
 Install Playwright:
-__Replace X in `netX` with whatever version of .NET you are using. (Ex. `net8.0`)__
 ```
-pwsh bin/Debug/netX/playwright.ps1 install
+pwsh bin/Debug/net8.0/playwright.ps1 install
 ```
 
 ### If you don't have powershell...
@@ -84,5 +83,6 @@ dotnet test
 
 ## Step 4 Record a new test
 ```
-codegen
+pwsh bin/Debug/net8.0/playwright.ps1 codegen demo.playwright.dev/todomvc
 ```
+The first part tells Playwright to record a new test using codegen. You then pass in a URL that you want to test.
