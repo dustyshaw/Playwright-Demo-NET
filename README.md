@@ -7,6 +7,10 @@
 2. [Step 2: Add your First Test](#Step-2-Add-your-First-Test)
 3. [Step 3: Run your tests](#Step-3-Run-your-tests)
 4. [Step 4: Record a new test](#Step-4-Record-a-new-test)
+5. [Step 5 Make some Assertions](#Step-5-Make-some-Assertions)
+6. [Step 6 Take a Screenshot](#Step-6-Take-a-Screenshot)
+
+
 
 ## Step 1 Set up Project
 Create a new project:
@@ -23,6 +27,7 @@ Build the project to generate the playwright.ps1 script:
 dotnet build
 ```
 Install Playwright:
+__Be aware of what version of .NET you are using on this step__
 ```
 pwsh bin/Debug/net8.0/playwright.ps1 install
 ```
@@ -87,3 +92,23 @@ pwsh bin/Debug/net8.0/playwright.ps1 codegen demo.playwright.dev/todomvc
 ```
 The first part tells Playwright to record a new test using codegen. You then pass in a URL that you want to test.
 When recording a new test, select `NUnit` from the drop down menu and copy the generated code into a new file. Make sure the namespace and the Class name are correct in your new test.
+
+## Step 5 Make some Assertions
+Playwright offers [many assertions](https://playwright.dev/dotnet/docs/test-assertions#list-of-assertions). Here is an example on the demo.playwright.dev/todomvc webpage:
+```
+await Expect(Page.GetByText("Welcome")).ToBeVisibleAsync();
+await Expect(Page.GetByTestId("todo-item").First).ToBeVisibleAsync();
+
+var locator = Page.Locator(".title");
+await Expect(locator).ToContainTextAsync("substring");
+await Expect(locator).ToContainTextAsync(new Regex("\\d messages"));
+```
+
+## Step 6 Take a Screenshot
+```
+await Page.ScreenshotAsync(new()
+{
+    Path = "../../../endoftest.png",
+    FullPage = true,
+});
+```
