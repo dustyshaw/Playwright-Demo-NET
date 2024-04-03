@@ -86,3 +86,4 @@ dotnet test
 pwsh bin/Debug/net8.0/playwright.ps1 codegen demo.playwright.dev/todomvc
 ```
 The first part tells Playwright to record a new test using codegen. You then pass in a URL that you want to test.
+When recording a new test, select `NUnit` from the drop down menu and copy the generated code into a new file. Make sure the namespace and the Class name are correct in your new test.
